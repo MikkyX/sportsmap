@@ -70,6 +70,15 @@
                                     venues[v].longitude,
                                     venues[v].latitude
                                 ])
+                                .setPopup(
+                                    new mapboxgl.Popup({
+                                        offset: 25
+                                    }).setHTML(
+                                        '<h5 class="is-size-5">'+venues[v].name+'</h5>'+
+                                        '<p>'+venues[v].address+'<br>'+
+                                        venues[v].postcode+'</p>'
+                                    )
+                                )
                                 .addTo(map)
                         );
                     }
