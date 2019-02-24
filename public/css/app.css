@@ -1,0 +1,31 @@
+html, body {
+    background: #eee;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    width: 100vw;
+}
+
+/* modified from https://codepen.io/anthonyLukes/pen/DLBeE */
+#outer {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+header, footer {
+    background: #000;
+    flex: 0 0 auto;
+}
+
+#content {
+    flex: 1 1 auto;
+    position: relative;
+    overflow-y: auto;
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+}
