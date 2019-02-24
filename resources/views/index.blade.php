@@ -48,6 +48,8 @@
         @endauth
 
         function updateMarkers() {
+            document.getElementById('update-message').classList.add('visible');
+
             bounds = map.getBounds();
             querystring = 'nelat='+bounds._ne.lat+
                 '&nelng='+bounds._ne.lng+
@@ -71,6 +73,8 @@
                                 .addTo(map)
                         );
                     }
+
+                    document.getElementById('update-message').classList.remove('visible');
                 }
             };
 
@@ -93,7 +97,6 @@
         });
 
         map.addControl(new mapboxgl.NavigationControl());
-        updateMarkers();
 
         map.on('render', function() {
             clearTimeout(updateTimer);
