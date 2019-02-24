@@ -28,6 +28,14 @@ header, footer {
 #map {
     height: 100%;
     width: 100%;
+    z-index: 50;
+}
+
+#map-help {
+    bottom: 1.5em;
+    right: 1.5em;
+    position: absolute;
+    z-index: 99;
 }
 
 #auth-form {
