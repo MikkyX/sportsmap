@@ -28,4 +28,13 @@ class Venue extends Model
             .' '
             .substr($postcode, -$incode_length, $incode_length);
     }
+
+    public function setTelephoneAttribute($value)
+    {
+        $this->attributes['telephone'] = preg_replace(
+            '/[^0-9]/',
+            '',
+            $value
+        );
+    }
 }
