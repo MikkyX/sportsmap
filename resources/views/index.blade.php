@@ -99,7 +99,7 @@
 
         mapboxgl.accessToken = 'pk.eyJ1IjoibWlra3l4IiwiYSI6ImNqaHY0ZnR5MDBzeGszcG4wcmt1ajRrY2kifQ.432QEVXzc6WJxSZJTMArZQ';
         map = new mapboxgl.Map({
-            center: [-2.547855, 54.00366],
+            center: [{{ $longitude }}, {{ $latitude }}],
             container: 'map',
             style: 'mapbox://styles/mapbox/streets-v11',
             zoom: 9

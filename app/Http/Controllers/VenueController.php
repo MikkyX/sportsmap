@@ -21,6 +21,9 @@ class VenueController extends Controller
         $venue->telephone = $request->telephone ?? '';
         $venue->save();
 
-        return redirect('/');
+        return redirect('/')->with([
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+        ]);
     }
 }
