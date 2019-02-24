@@ -29,3 +29,7 @@ header, footer {
     height: 100%;
     width: 100%;
 }
+
+#auth-form {
+    margin: 1em 0;
+}

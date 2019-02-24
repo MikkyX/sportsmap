@@ -14,7 +14,34 @@
 <body>
     <div id="outer">
         <header>
-            Header
+            <nav class="navbar">
+                <div class="navbar-brand">
+                    <a class="navbar-item" href="/">Sportsmap</a>
+                </div>
+                <div class="navbar-menu is-active">
+                    <div class="navbar-end">
+                        @guest
+                        <div class="navbar-item">
+                            <div class="buttons">
+                                <a href="/register" class="button is-primary">Register</a>
+                                <a href="/login" class="button">Login</a>
+                            </div>
+                        </div>
+                        @else
+                            <div class="navbar-item">
+                                {{ Auth::user()->name }}
+                            </div>
+                            <div class="navbar-item">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button class="button is-danger">Log Out</button>
+                                </form>
+                            </div>
+                        @endguest
+                    </div>
+
+                </div>
+            </nav>
         </header>
         <div id="content">
             @yield('content')
