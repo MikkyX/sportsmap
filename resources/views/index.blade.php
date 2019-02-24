@@ -16,11 +16,17 @@
             </div>
         </div>
     </div>
+    <div class="message is-success" id="update-message">
+        <div class="message-body">
+            Updating map...
+        </div>
+    </div>
 @endsection
 @section('script')
     <script>
         var map;
         var markers = Array();
+        var updateTimer;
         var venueForm;
 
         @auth
@@ -88,6 +94,11 @@
 
         map.addControl(new mapboxgl.NavigationControl());
         updateMarkers();
+
+        map.on('render', function() {
+            clearTimeout(updateTimer);
+            updateTimer = setTimeout(updateMarkers, 250);
+        });
 
         @auth
         map.on('dblclick', function(e) {
