@@ -17,3 +17,4 @@ Auth::routes();
 
 // Venue management
 Route::post('/venues', 'VenueController@store');
+Route::get('/venue-search', 'VenueSearchController@index');

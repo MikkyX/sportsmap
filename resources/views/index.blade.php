@@ -19,6 +19,8 @@
 @endsection
 @section('script')
     <script>
+        var map;
+        var markers = Array();
         var venueForm;
 
         @auth
@@ -39,8 +41,45 @@
         }
         @endauth
 
+        function updateMarkers() {
+            bounds = map.getBounds();
+            querystring = 'nelat='+bounds._ne.lat+
+                '&nelng='+bounds._ne.lng+
+                '&swlat='+bounds._sw.lat+
+                '&swlng='+bounds._sw.lng;
+
+            xmlhttp = new XMLHttpRequest();
+
+            xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    var venues = JSON.parse(xmlhttp.responseText);
+                    wipeMarkers();
+
+                    for (var v = 0; v < venues.length; v++) {
+                        markers.push(
+                            new mapboxgl.Marker()
+                                .setLngLat([
+                                    venues[v].longitude,
+                                    venues[v].latitude
+                                ])
+                                .addTo(map)
+                        );
+                    }
+                }
+            };
+
+            xmlhttp.open("GET", '/venue-search?'+querystring, true);
+            xmlhttp.send();
+        }
+
+        function wipeMarkers() {
+            for (var m = 0; m < markers.length; m++) {
+                markers[m].remove();
+            }
+        }
+
         mapboxgl.accessToken = 'pk.eyJ1IjoibWlra3l4IiwiYSI6ImNqaHY0ZnR5MDBzeGszcG4wcmt1ajRrY2kifQ.432QEVXzc6WJxSZJTMArZQ';
-        var map = new mapboxgl.Map({
+        map = new mapboxgl.Map({
             center: [-2.547855, 54.00366],
             container: 'map',
             style: 'mapbox://styles/mapbox/streets-v11',
@@ -48,6 +87,7 @@
         });
 
         map.addControl(new mapboxgl.NavigationControl());
+        updateMarkers();
 
         @auth
         map.on('dblclick', function(e) {
