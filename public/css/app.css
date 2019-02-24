@@ -38,6 +38,10 @@ header, footer {
     z-index: 99;
 }
 
+.modal {
+    z-index: 100;
+}
+
 #auth-form {
     margin: 1em 0;
 }
