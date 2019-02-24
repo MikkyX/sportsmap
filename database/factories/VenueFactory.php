@@ -16,8 +16,8 @@ $factory->define(
             'name' => $faker->company(),
             'address' => $faker->streetAddress(),
             'postcode' => $faker->postcode(),
-            'latitude' => $faker->latitude(53.4054960449, 54.9674312464),
-            'longitude' => $faker->longitude(-2.7246891434, -0.5325733597),
+            'latitude' => $faker->latitude(50.656861, 55.068146),
+            'longitude' => $faker->longitude(-2.774530, 0.232349),
             'website' => 'http://'.$faker->domainName(),
             'telephone' => $faker->phoneNumber(),
         ];
