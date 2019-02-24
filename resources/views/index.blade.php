@@ -63,7 +63,7 @@
         <div class="modal-content">
             <div class="box">
                 <h4 class="is-size-4">Add New Venue</h4>
-                <form action="/venue">
+                <form action="/venues" method="post">
                     @csrf
                     <input type="hidden" name="latitude" id="latitude">
                     <input type="hidden" name="longitude" id="longitude">
@@ -88,13 +88,13 @@
                     <div class="field">
                         <label for="website" class="label">Website:</label>
                         <div class="control">
-                            <input type="text" class="input" name="website" maxlength="8">
+                            <input type="text" class="input" name="website">
                         </div>
                     </div>
                     <div class="field">
                         <label for="telephone" class="label">Telephone Number:</label>
                         <div class="control">
-                            <input type="text" class="input" name="telephone" maxlength="8">
+                            <input type="text" class="input" name="telephone">
                         </div>
                     </div>
                     <div class="field">

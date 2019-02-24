@@ -15,4 +15,5 @@ Route::get('/', 'PageController@index');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Venue management
+Route::post('/venues', 'VenueController@store');
